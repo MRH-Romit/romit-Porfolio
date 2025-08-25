@@ -43,15 +43,25 @@ if(navToggle && navList){
 }
 
 // Intersection Observer for reveal animations
-(()=>{
-  const targets = document.querySelectorAll('.section, .project-card, .timeline-item, .skill');
-  if(!targets.length) return;
-  targets.forEach(el => el.classList.add('reveal'));
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target);} });
-  },{threshold:0.16, rootMargin:'0px 0px -40px'});
-  targets.forEach(el => io.observe(el));
+const registerReveal = (()=>{
+  let io;
+  function initObserver(){
+    if(io) return io;
+    io = new IntersectionObserver(entries => {
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target);} });
+    },{threshold:0.16, rootMargin:'0px 0px -40px'});
+    return io;
+  }
+  return function register(scope=document){
+    const targets = scope.querySelectorAll('.reveal:not(.visible)');
+    if(!targets.length) return;
+    const observer = initObserver();
+    targets.forEach(el => observer.observe(el));
+  };
 })();
+// initial mark & register
+document.querySelectorAll('.section, .project-card, .timeline-item, .skill').forEach(el=>el.classList.add('reveal'));
+registerReveal();
 
 // Animated numbers
 (()=>{
@@ -117,17 +127,24 @@ if(navToggle && navList){
   const grid = document.getElementById('projectsGrid');
   if(!grid || !window.fetch) return;
   const username = 'MRH-Romit';
+  // Add loading state badge
+  const loadingNote = document.createElement('div');
+  loadingNote.textContent = 'Loading projects…';
+  loadingNote.style.fontSize = '.75rem';
+  loadingNote.style.letterSpacing = '.12em';
+  loadingNote.style.textTransform = 'uppercase';
+  loadingNote.style.opacity = '.55';
+  loadingNote.style.marginTop = '1rem';
+  grid.before(loadingNote);
   fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`)
     .then(r=>r.ok?r.json():Promise.reject(r.status))
     .then(repos=>{
       const filtered = repos.filter(r=>!r.fork && !r.private);
       filtered.sort((a,b)=> (b.stargazers_count - a.stargazers_count) || (b.forks_count - a.forks_count));
-      const top = filtered.slice(0,3);
-      if(!top.length) return;
-      // Remove existing static cards (keep first parent container clean)
-      grid.innerHTML = '';
+  const top = filtered.slice(0,3);
+  if(!top.length) return; // keep existing curated list
       top.forEach(repo=>{
-        const el = document.createElement('article'); el.className='project-card reveal';
+        const el = document.createElement('article'); el.className='project-card';
         el.innerHTML = `
           <div class="project-media skeleton" title="${repo.name}"></div>
           <div class="project-content">
@@ -143,10 +160,17 @@ if(navToggle && navList){
               <a href="${repo.html_url}" class="btn btn-small btn-ghost" target="_blank" rel="noopener">Code</a>
             </div>
           </div>`;
-        grid.appendChild(el);
+  grid.appendChild(el); // append after curated cards
+      });
+      // animate them in immediately
+      requestAnimationFrame(()=>{
+        grid.querySelectorAll('.project-card').forEach(card=>{
+          card.classList.add('reveal','visible');
+        });
       });
     })
-    .catch(()=>{});
+    .catch(()=>{})
+    .finally(()=>{ loadingNote.remove(); });
 })();
 
 // Active nav link highlighting

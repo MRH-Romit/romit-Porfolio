@@ -83,6 +83,10 @@ p {margin:0 0 1.1rem;}
 .socials a {--sz:40px;width:var(--sz);height:var(--sz);display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,0.06);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);position:relative;overflow:hidden;transition:var(--transition);}
 .socials a:after {content:"";position:absolute;inset:0;opacity:.15;background:var(--accent);mix-blend-mode:overlay;}
 .socials a:hover {transform:translateY(-4px);box-shadow:0 4px 16px -4px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.15);}
+.socials .icon {background-size:60%;background-repeat:no-repeat;background-position:center;}
+.socials .github {background-image:url('./images/github.png.png');}
+.socials .linkedin {background-image:url('./images/LinkedIn .png.png');}
+.socials .email {background-image:url('./images/gmail.png.png');}
 .gradient {background:var(--accent);-webkit-background-clip:text;background-clip:text;color:transparent;}
 .hero-art {position:relative;aspect-ratio:1/1;max-width:520px;width:100%;border-radius:32px;background:radial-gradient(circle at 40% 30%,#12151b,#020203);box-shadow:0 0 0 1px rgba(255,255,255,.04),0 14px 70px -18px rgba(0,0,0,.85);overflow:hidden;}
 .hero-art:after {content:"";position:absolute;inset:0;background:radial-gradient(circle at 60% 40%,rgba(90,99,242,.25),transparent 70%);mix-blend-mode:overlay;}
