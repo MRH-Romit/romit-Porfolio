@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Redwan Hossain Romit — Portfolio</title>
+  <meta name="description" content="Portfolio of Redwan Hossain Romit" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container flex between center-v">
+      <div class="brand">Redwan <span>Hossain</span> Romit</div>
+      <nav class="nav" id="nav">
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+        <ul class="nav-list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact" class="btn btn-primary btn-small">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero container">
+    <div class="hero-text">
+      <h1><span class="hi">Hi, I'm</span> <span class="gradient">Redwan Hossain Romit</span></h1>
+      <h2 class="subtitle"><span id="typed"></span></h2>
+      <p class="lead">Passionate <strong>Software Developer</strong> focused on crafting performant, accessible & delightful digital experiences. (Insert concise summary from CV.)</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="./Redwan-Hossain-Romit-CV.pdf" class="btn btn-ghost" download>Download CV</a>
+      </div>
+      <div class="socials" aria-label="Social links">
+        <!-- Add actual links -->
+        <a href="#" aria-label="GitHub" class="icon github"></a>
+        <a href="#" aria-label="LinkedIn" class="icon linkedin"></a>
+        <a href="#" aria-label="Email" class="icon email"></a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <canvas id="orbCanvas"></canvas>
+    </div>
+  </section>
+
+  <section id="about" class="section alt">
+    <div class="container grid-2 gap-xl">
+      <div>
+        <h3 class="eyebrow">About</h3>
+        <h2 class="section-title">Who I Am</h2>
+        <p>(Insert About paragraph(s) from CV: background, passions, mission.)</p>
+        <p>(Optional secondary paragraph elaborating impact / philosophy.)</p>
+        <div class="quick-stats">
+          <div><span class="num" data-count="3">3+</span><span class="label">Years Coding</span></div>
+          <div><span class="num" data-count="15">15+</span><span class="label">Projects</span></div>
+          <div><span class="num" data-count="5">5+</span><span class="label">Tech Stacks</span></div>
+        </div>
+      </div>
+      <div class="card shadow bio-card">
+        <h3>Profile Snapshot</h3>
+        <ul class="checklist">
+          <li>Role: (e.g. Full Stack Developer)</li>
+          <li>Location: (City, Country)</li>
+          <li>Education: (Degree / Major / Year)</li>
+          <li>Focus: (Key interests e.g. Web Performance, UX, AI)</li>
+          <li>Open to: (Job / Freelance / Collaboration)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="section">
+    <div class="container">
+      <h3 class="eyebrow">Experience</h3>
+      <h2 class="section-title">Professional Journey</h2>
+      <div class="timeline" id="experienceTimeline">
+        <!-- Timeline items inserted via JS or static markup -->
+        <!-- Example item -->
+        <article class="timeline-item">
+          <div class="time">2024 — Present</div>
+          <div class="content">
+            <h3>Job Title / Role <span class="company">@ Company</span></h3>
+            <ul>
+              <li>Key achievement or responsibility from CV.</li>
+              <li>Impact metric or outcome (e.g. improved load time by 30%).</li>
+              <li>Stack: React, Node.js, etc.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section alt">
+    <div class="container">
+      <h3 class="eyebrow">Skills</h3>
+      <h2 class="section-title">Tech Stack & Tools</h2>
+      <div class="skills-grid" id="skillsGrid">
+        <!-- Example skills -->
+        <div class="skill"><span>JavaScript</span></div>
+        <div class="skill"><span>TypeScript</span></div>
+        <div class="skill"><span>React</span></div>
+        <div class="skill"><span>Next.js</span></div>
+        <div class="skill"><span>Node.js</span></div>
+        <div class="skill"><span>TailwindCSS</span></div>
+        <div class="skill"><span>MongoDB</span></div>
+        <div class="skill"><span>PostgreSQL</span></div>
+        <div class="skill"><span>Git</span></div>
+        <div class="skill"><span>Docker</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <div class="container">
+      <h3 class="eyebrow">Projects</h3>
+      <h2 class="section-title">Selected Work</h2>
+      <div class="projects-grid" id="projectsGrid">
+        <!-- Project card example -->
+        <article class="project-card">
+          <div class="project-media skeleton"></div>
+          <div class="project-content">
+            <h3>Project Name</h3>
+            <p>Brief description focusing on problem solved, approach & impact.</p>
+            <ul class="tags">
+              <li>React</li><li>Node</li><li>REST</li>
+            </ul>
+            <div class="links">
+              <a href="#" class="btn btn-small btn-primary-outline">Live</a>
+              <a href="#" class="btn btn-small btn-ghost">Code</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section cta-section alt">
+    <div class="container narrow center-text">
+      <h3 class="eyebrow">Contact</h3>
+      <h2 class="section-title">Let's Build Something</h2>
+      <p>Interested in collaborating or have an opportunity? Reach out via the form below or email me directly at <a href="mailto:email@example.com">email@example.com</a>.</p>
+      <form class="contact-form" name="contact" netlify>
+        <div class="grid-2 gap">
+          <div class="field"><label>Name<input name="name" required /></label></div>
+          <div class="field"><label>Email<input type="email" name="email" required /></label></div>
+        </div>
+        <div class="field"><label>Subject<input name="subject" /></label></div>
+        <div class="field"><label>Message<textarea name="message" rows="5" required></textarea></label></div>
+        <button class="btn btn-primary" type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container flex between center-v wrap small">
+      <div>© <span id="year"></span> Redwan Hossain Romit. All rights reserved.</div>
+      <div class="footer-links"><a href="#top">Back to top ↑</a></div>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>
