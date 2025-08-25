@@ -14,7 +14,7 @@
   <header class="site-header" id="top">
     <div class="container flex between center-v">
       <div class="brand">Redwan <span>Hossain</span> Romit</div>
-      <nav class="nav" id="nav">
+      <nav class="nav" id="nav" aria-label="Primary Navigation">
         <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
         <ul class="nav-list">
           <li><a href="#about">About</a></li>
@@ -22,6 +22,7 @@
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#contact" class="btn btn-primary btn-small">Contact</a></li>
+          <li><button id="themeToggle" class="btn btn-small btn-ghost" type="button" aria-label="Toggle theme">🌓</button></li>
         </ul>
       </nav>
     </div>
@@ -30,21 +31,21 @@
   <section class="hero container">
     <div class="hero-text">
       <h1><span class="hi">Hi, I'm</span> <span class="gradient">Redwan Hossain Romit</span></h1>
-      <h2 class="subtitle"><span id="typed"></span></h2>
-      <p class="lead">Passionate <strong>Software Developer</strong> focused on crafting performant, accessible & delightful digital experiences. (Insert concise summary from CV.)</p>
+  <h2 class="subtitle"><span id="typed" aria-live="polite"></span></h2>
+  <p class="lead">I'm a 3rd-year <strong>CSE student at UIU</strong> diving deep into <strong>Machine Learning</strong>, <strong>App Development</strong>, <strong>Networking</strong> & <strong>DevOps</strong> — focused on building efficient systems & solving real-world problems.</p>
       <div class="hero-actions">
         <a href="#projects" class="btn btn-primary">View Projects</a>
         <a href="./Redwan-Hossain-Romit-CV.pdf" class="btn btn-ghost" download>Download CV</a>
       </div>
       <div class="socials" aria-label="Social links">
-        <!-- Add actual links -->
-        <a href="#" aria-label="GitHub" class="icon github"></a>
-        <a href="#" aria-label="LinkedIn" class="icon linkedin"></a>
-        <a href="#" aria-label="Email" class="icon email"></a>
+        <a href="https://github.com/MRH-Romit" target="_blank" rel="noopener" aria-label="GitHub" class="icon github" title="GitHub"></a>
+        <a href="https://www.linkedin.com/in/redwan-hossain-romit" target="_blank" rel="noopener" aria-label="LinkedIn" class="icon linkedin" title="LinkedIn"></a>
+        <a href="mailto:mdromit2002@gmail.com" aria-label="Email" class="icon email" title="Email"></a>
       </div>
     </div>
     <div class="hero-art" aria-hidden="true">
-      <canvas id="orbCanvas"></canvas>
+      <canvas id="hero3d" aria-hidden="true"></canvas>
+      <canvas id="orbCanvas" aria-hidden="true"></canvas>
     </div>
   </section>
 
@@ -53,22 +54,23 @@
       <div>
         <h3 class="eyebrow">About</h3>
         <h2 class="section-title">Who I Am</h2>
-        <p>(Insert About paragraph(s) from CV: background, passions, mission.)</p>
-        <p>(Optional secondary paragraph elaborating impact / philosophy.)</p>
+  <p>I love transforming ideas into fast, reliable software. Focus areas: distributed systems fundamentals, ML experimentation, and deploying production-ready web & mobile apps. I value clean architecture, measurable impact, and continuous learning.</p>
+  <p>I'm intentional about documentation, developer experience, and collaborative problem solving. I explore open source, performance profiling, and automation to reduce friction for teams.</p>
         <div class="quick-stats">
           <div><span class="num" data-count="3">3+</span><span class="label">Years Coding</span></div>
-          <div><span class="num" data-count="15">15+</span><span class="label">Projects</span></div>
-          <div><span class="num" data-count="5">5+</span><span class="label">Tech Stacks</span></div>
+          <div><span class="num" data-count="27">27+</span><span class="label">Public Repos</span></div>
+          <div><span class="num" data-count="49">49+</span><span class="label">Stars Earned</span></div>
+          <div><span class="num" data-count="276">276+</span><span class="label">2025 Commits</span></div>
         </div>
       </div>
       <div class="card shadow bio-card">
         <h3>Profile Snapshot</h3>
         <ul class="checklist">
-          <li>Role: (e.g. Full Stack Developer)</li>
-          <li>Location: (City, Country)</li>
-          <li>Education: (Degree / Major / Year)</li>
-          <li>Focus: (Key interests e.g. Web Performance, UX, AI)</li>
-          <li>Open to: (Job / Freelance / Collaboration)</li>
+          <li>Role: Full Stack / ML Enthusiast</li>
+          <li>Location: Dhaka, Bangladesh</li>
+          <li>Education: BSc CSE, UIU (3rd Year)</li>
+          <li>Focus: ML, DevOps, Scalable Web Apps, Networking</li>
+          <li>Open to: Internships, Open Source, Collaborations</li>
         </ul>
       </div>
     </div>
@@ -101,17 +103,18 @@
       <h3 class="eyebrow">Skills</h3>
       <h2 class="section-title">Tech Stack & Tools</h2>
       <div class="skills-grid" id="skillsGrid">
-        <!-- Example skills -->
-        <div class="skill"><span>JavaScript</span></div>
-        <div class="skill"><span>TypeScript</span></div>
-        <div class="skill"><span>React</span></div>
-        <div class="skill"><span>Next.js</span></div>
-        <div class="skill"><span>Node.js</span></div>
-        <div class="skill"><span>TailwindCSS</span></div>
-        <div class="skill"><span>MongoDB</span></div>
-        <div class="skill"><span>PostgreSQL</span></div>
-        <div class="skill"><span>Git</span></div>
-        <div class="skill"><span>Docker</span></div>
+  <div class="skill"><span>JavaScript / TypeScript</span></div>
+  <div class="skill"><span>React / Next.js</span></div>
+  <div class="skill"><span>Node.js / Express</span></div>
+  <div class="skill"><span>Python (ML)</span></div>
+  <div class="skill"><span>Machine Learning</span></div>
+  <div class="skill"><span>PostgreSQL / MongoDB</span></div>
+  <div class="skill"><span>REST / API Design</span></div>
+  <div class="skill"><span>Docker & DevOps Basics</span></div>
+  <div class="skill"><span>Git / GitHub</span></div>
+  <div class="skill"><span>Networking Fundamentals</span></div>
+  <div class="skill"><span>CI / Automation</span></div>
+  <div class="skill"><span>TailwindCSS</span></div>
       </div>
     </div>
   </section>
@@ -121,18 +124,37 @@
       <h3 class="eyebrow">Projects</h3>
       <h2 class="section-title">Selected Work</h2>
       <div class="projects-grid" id="projectsGrid">
-        <!-- Project card example -->
         <article class="project-card">
-          <div class="project-media skeleton"></div>
+          <div class="project-media skeleton" title="DevOps / Automation"></div>
           <div class="project-content">
-            <h3>Project Name</h3>
-            <p>Brief description focusing on problem solved, approach & impact.</p>
-            <ul class="tags">
-              <li>React</li><li>Node</li><li>REST</li>
-            </ul>
+            <h3>Automation & CI Utilities</h3>
+            <p>Scripts & GitHub workflows to streamline setup, linting, and deployment tasks across multiple repositories.</p>
+            <ul class="tags"><li>Bash</li><li>CI</li><li>GitHub Actions</li></ul>
             <div class="links">
-              <a href="#" class="btn btn-small btn-primary-outline">Live</a>
-              <a href="#" class="btn btn-small btn-ghost">Code</a>
+              <a href="https://github.com/MRH-Romit" class="btn btn-small btn-ghost" target="_blank" rel="noopener">Code</a>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="project-media skeleton" title="Full Stack"></div>
+          <div class="project-content">
+            <h3>Full Stack App</h3>
+            <p>Authentication, role-based access, optimized querying & clean API design in a modular Next.js / Node stack.</p>
+            <ul class="tags"><li>Next.js</li><li>Node</li><li>PostgreSQL</li></ul>
+            <div class="links">
+              <a href="#" class="btn btn-small btn-primary-outline" aria-disabled="true">Live</a>
+              <a href="https://github.com/MRH-Romit" class="btn btn-small btn-ghost" target="_blank" rel="noopener">Code</a>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="project-media skeleton" title="Machine Learning"></div>
+          <div class="project-content">
+            <h3>ML Experiments</h3>
+            <p>Reproducible notebooks exploring feature engineering, model selection & evaluation pipelines.</p>
+            <ul class="tags"><li>Python</li><li>ML</li><li>Notebook</li></ul>
+            <div class="links">
+              <a href="https://github.com/MRH-Romit" class="btn btn-small btn-ghost" target="_blank" rel="noopener">Code</a>
             </div>
           </div>
         </article>
@@ -144,7 +166,7 @@
     <div class="container narrow center-text">
       <h3 class="eyebrow">Contact</h3>
       <h2 class="section-title">Let's Build Something</h2>
-      <p>Interested in collaborating or have an opportunity? Reach out via the form below or email me directly at <a href="mailto:email@example.com">email@example.com</a>.</p>
+  <p>Interested in collaborating or have an opportunity? Reach out via the form below or email me directly at <a href="mailto:mdromit2002@gmail.com">mdromit2002@gmail.com</a>.</p>
       <form class="contact-form" name="contact" netlify>
         <div class="grid-2 gap">
           <div class="field"><label>Name<input name="name" required /></label></div>
@@ -164,6 +186,8 @@
     </div>
   </footer>
 
-  <script src="./script.js"></script>
+  <noscript><style>#typed{display:none} .dynamic-projects-note{display:none}</style></noscript>
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js" defer></script>
+  <script src="./script.js" defer></script>
 </body>
 </html>
