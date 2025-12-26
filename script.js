@@ -104,35 +104,146 @@ registerReveal();
   let t=0; (function draw(){ t+=0.01; const {width:w,height:h}=canvas; ctx.clearRect(0,0,w,h); const cx=w/2+Math.sin(t*0.7)*w*0.08; const cy=h/2+Math.cos(t*0.9)*h*0.08; const r=Math.min(w,h)*0.35+Math.sin(t)*10; const g=ctx.createRadialGradient(cx,cy,r*0.2,cx,cy,r); g.addColorStop(0,'rgba(99,102,241,0.9)'); g.addColorStop(0.45,'rgba(139,92,246,0.55)'); g.addColorStop(1,'rgba(12,15,29,0)'); ctx.fillStyle=g; ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2); ctx.fill(); requestAnimationFrame(draw); })();
 })();
 
-// 3D Hero (rotating wireframe model using Three.js)
+// Modern Particle Network Animation for Hero
 (()=>{
   const canvas = document.getElementById('hero3d');
-  if(!canvas || !window.THREE) return;
-  const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; if(prefersReduce) return;
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
-  camera.position.set(0,0,6);
-  const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
-  const resize = ()=>{
-    const w = canvas.clientWidth; const h = canvas.clientHeight; renderer.setSize(w,h,false); camera.aspect = w/h || 1; camera.updateProjectionMatrix();
-  }; resize(); window.addEventListener('resize', resize, {passive:true});
-  const group = new THREE.Group(); scene.add(group);
-  const geo1 = new THREE.IcosahedronGeometry(2,1);
-  const mat1 = new THREE.MeshBasicMaterial({wireframe:true,color:0x5a63f2,transparent:true,opacity:0.6});
-  const mesh1 = new THREE.Mesh(geo1,mat1); group.add(mesh1);
-  const geo2 = new THREE.TorusKnotGeometry(1.2,0.35,120,16);
-  const mat2 = new THREE.MeshBasicMaterial({wireframe:true,color:0xd84fb3,transparent:true,opacity:0.35});
-  const mesh2 = new THREE.Mesh(geo2,mat2); group.add(mesh2);
-  mesh2.rotation.x = Math.PI/3;
-  const clock = new THREE.Clock();
-  function animate(){
-    const t = clock.getElapsedTime();
-    mesh1.rotation.y = t*0.25; mesh1.rotation.x = t*0.18;
-    mesh2.rotation.y = t*0.3; mesh2.rotation.z = t*0.12;
-    group.rotation.y = Math.sin(t*0.1)*0.4;
-    renderer.render(scene,camera);
+  if(!canvas) return;
+  const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(prefersReduce) return;
+  
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let mouse = {x: null, y: null, radius: 150};
+  
+  function resize(){
+    canvas.width = canvas.clientWidth * devicePixelRatio;
+    canvas.height = canvas.clientHeight * devicePixelRatio;
+    ctx.scale(devicePixelRatio, devicePixelRatio);
+    initParticles();
+  }
+  
+  canvas.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+  });
+  
+  canvas.addEventListener('mouseleave', () => {
+    mouse.x = null;
+    mouse.y = null;
+  });
+  
+  class Particle {
+    constructor(x, y) {
+      this.x = x;
+      this.y = y;
+      this.size = Math.random() * 3 + 1;
+      this.baseX = x;
+      this.baseY = y;
+      this.density = Math.random() * 30 + 10;
+      this.vx = Math.random() * 0.5 - 0.25;
+      this.vy = Math.random() * 0.5 - 0.25;
+    }
+    
+    draw() {
+      ctx.fillStyle = `rgba(99, 102, 241, ${0.8 - this.size / 10})`;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    
+    update() {
+      // Mouse interaction
+      if(mouse.x != null && mouse.y != null) {
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const forceDirectionX = dx / distance;
+        const forceDirectionY = dy / distance;
+        const maxDistance = mouse.radius;
+        const force = (maxDistance - distance) / maxDistance;
+        
+        if(distance < mouse.radius) {
+          this.x -= forceDirectionX * force * this.density * 0.6;
+          this.y -= forceDirectionY * force * this.density * 0.6;
+        }
+      }
+      
+      // Return to base position
+      const dx = this.baseX - this.x;
+      const dy = this.baseY - this.y;
+      this.x += dx * 0.05;
+      this.y += dy * 0.05;
+      
+      // Gentle drift
+      this.baseX += this.vx;
+      this.baseY += this.vy;
+      
+      const w = canvas.clientWidth;
+      const h = canvas.clientHeight;
+      
+      if(this.baseX < 0 || this.baseX > w) this.vx *= -1;
+      if(this.baseY < 0 || this.baseY > h) this.vy *= -1;
+    }
+  }
+  
+  function initParticles() {
+    particles = [];
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
+    const numberOfParticles = Math.min(Math.floor((w * h) / 15000), 100);
+    
+    for(let i = 0; i < numberOfParticles; i++) {
+      const x = Math.random() * w;
+      const y = Math.random() * h;
+      particles.push(new Particle(x, y));
+    }
+  }
+  
+  function connectParticles() {
+    for(let i = 0; i < particles.length; i++) {
+      for(let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if(distance < 120) {
+          const opacity = (1 - distance / 120) * 0.5;
+          ctx.strokeStyle = `rgba(99, 102, 241, ${opacity})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+  }
+  
+  function animate() {
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
+    ctx.clearRect(0, 0, w, h);
+    
+    // Draw gradient background
+    const gradient = ctx.createRadialGradient(w/2, h/2, 0, w/2, h/2, Math.max(w, h)/2);
+    gradient.addColorStop(0, 'rgba(99, 102, 241, 0.03)');
+    gradient.addColorStop(1, 'rgba(139, 92, 246, 0.01)');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, w, h);
+    
+    // Update and draw particles
+    particles.forEach(particle => {
+      particle.update();
+      particle.draw();
+    });
+    
+    connectParticles();
     requestAnimationFrame(animate);
   }
+  
+  window.addEventListener('resize', resize, {passive:true});
+  resize();
   animate();
 })();
 
