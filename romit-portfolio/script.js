@@ -60,8 +60,22 @@ const registerReveal = (()=>{
   };
 })();
 // initial mark & register
-document.querySelectorAll('.section, .project-card, .timeline-item, .skill, .achievement-card').forEach(el=>el.classList.add('reveal'));
+document.querySelectorAll('.section, .project-card, .timeline-item, .skill, .achievement-card, .bio-card').forEach(el=>el.classList.add('reveal'));
 registerReveal();
+
+// Parallax effect for hero art
+(()=>{
+  const heroArt = document.querySelector('.hero-art');
+  if(!heroArt) return;
+  const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(prefersReduce) return;
+  
+  window.addEventListener('scroll', ()=>{
+    const scrolled = window.scrollY;
+    const rate = scrolled * 0.3;
+    heroArt.style.transform = `translateY(${rate}px)`;
+  }, {passive:true});
+})();
 
 // Animated numbers
 (()=>{
@@ -134,6 +148,39 @@ function onScroll(){
 }
 window.addEventListener('scroll', onScroll, {passive:true});
 requestAnimationFrame(onScroll);
+
+// Scroll Progress Bar
+(()=>{
+  const progressBar = document.createElement('div');
+  progressBar.className = 'scroll-progress';
+  document.body.appendChild(progressBar);
+  
+  function updateProgress(){
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (scrollTop / docHeight) * 100;
+    progressBar.style.width = progress + '%';
+  }
+  
+  window.addEventListener('scroll', updateProgress, {passive:true});
+  updateProgress();
+})();
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e){
+    const href = this.getAttribute('href');
+    if(href === '#' || href === '#top') return;
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if(target){
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+      // Close mobile nav if open
+      const navList = document.querySelector('.nav-list');
+      if(navList) navList.classList.remove('show');
+    }
+  });
+});
 
 // Theme toggle
 const themeToggle = document.getElementById('themeToggle');

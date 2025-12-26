@@ -3,11 +3,11 @@
 (()=>{
   const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const roles = [
-    'Full Stack Developer',
-    'ML Explorer',
-    'DevOps Learner',
+    'ML & Network Security Specialist',
+    'UIU Robotics Sub Team Lead',
     'Open Source Contributor',
-    'CSE Student (UIU)'
+    '4th Year CSE Student',
+    'Hardware & Software Integrator'
   ];
   let typedIndex = 0, charIndex = 0, deleting = false;
   const typedEl = document.getElementById('typed');
@@ -60,8 +60,22 @@ const registerReveal = (()=>{
   };
 })();
 // initial mark & register
-document.querySelectorAll('.section, .project-card, .timeline-item, .skill').forEach(el=>el.classList.add('reveal'));
+document.querySelectorAll('.section, .project-card, .timeline-item, .skill, .achievement-card, .bio-card').forEach(el=>el.classList.add('reveal'));
 registerReveal();
+
+// Parallax effect for hero art
+(()=>{
+  const heroArt = document.querySelector('.hero-art');
+  if(!heroArt) return;
+  const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(prefersReduce) return;
+  
+  window.addEventListener('scroll', ()=>{
+    const scrolled = window.scrollY;
+    const rate = scrolled * 0.3;
+    heroArt.style.transform = `translateY(${rate}px)`;
+  }, {passive:true});
+})();
 
 // Animated numbers
 (()=>{
@@ -122,57 +136,6 @@ registerReveal();
   animate();
 })();
 
-// Dynamic GitHub Projects (fetch top starred repos)
-(()=>{
-  const grid = document.getElementById('projectsGrid');
-  if(!grid || !window.fetch) return;
-  const username = 'MRH-Romit';
-  // Add loading state badge
-  const loadingNote = document.createElement('div');
-  loadingNote.textContent = 'Loading projects…';
-  loadingNote.style.fontSize = '.75rem';
-  loadingNote.style.letterSpacing = '.12em';
-  loadingNote.style.textTransform = 'uppercase';
-  loadingNote.style.opacity = '.55';
-  loadingNote.style.marginTop = '1rem';
-  grid.before(loadingNote);
-  fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`)
-    .then(r=>r.ok?r.json():Promise.reject(r.status))
-    .then(repos=>{
-      const filtered = repos.filter(r=>!r.fork && !r.private);
-      filtered.sort((a,b)=> (b.stargazers_count - a.stargazers_count) || (b.forks_count - a.forks_count));
-  const top = filtered.slice(0,3);
-  if(!top.length) return; // keep existing curated list
-      top.forEach(repo=>{
-        const el = document.createElement('article'); el.className='project-card';
-        el.innerHTML = `
-          <div class="project-media skeleton" title="${repo.name}"></div>
-          <div class="project-content">
-            <h3>${repo.name}</h3>
-            <p>${(repo.description||'').slice(0,140) || 'No description provided.'}</p>
-            <ul class="tags">
-              <li>${repo.language || 'Code'}</li>
-              <li>★ ${repo.stargazers_count}</li>
-              <li>Forks ${repo.forks_count}</li>
-            </ul>
-            <div class="links">
-              ${repo.homepage?`<a href="${repo.homepage}" class="btn btn-small btn-primary-outline" target="_blank" rel="noopener">Live</a>`:''}
-              <a href="${repo.html_url}" class="btn btn-small btn-ghost" target="_blank" rel="noopener">Code</a>
-            </div>
-          </div>`;
-  grid.appendChild(el); // append after curated cards
-      });
-      // animate them in immediately
-      requestAnimationFrame(()=>{
-        grid.querySelectorAll('.project-card').forEach(card=>{
-          card.classList.add('reveal','visible');
-        });
-      });
-    })
-    .catch(()=>{})
-    .finally(()=>{ loadingNote.remove(); });
-})();
-
 // Active nav link highlighting
 const sections = Array.from(document.querySelectorAll('section[id]'));
 function onScroll(){
@@ -185,6 +148,39 @@ function onScroll(){
 }
 window.addEventListener('scroll', onScroll, {passive:true});
 requestAnimationFrame(onScroll);
+
+// Scroll Progress Bar
+(()=>{
+  const progressBar = document.createElement('div');
+  progressBar.className = 'scroll-progress';
+  document.body.appendChild(progressBar);
+  
+  function updateProgress(){
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (scrollTop / docHeight) * 100;
+    progressBar.style.width = progress + '%';
+  }
+  
+  window.addEventListener('scroll', updateProgress, {passive:true});
+  updateProgress();
+})();
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e){
+    const href = this.getAttribute('href');
+    if(href === '#' || href === '#top') return;
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if(target){
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+      // Close mobile nav if open
+      const navList = document.querySelector('.nav-list');
+      if(navList) navList.classList.remove('show');
+    }
+  });
+});
 
 // Theme toggle
 const themeToggle = document.getElementById('themeToggle');
