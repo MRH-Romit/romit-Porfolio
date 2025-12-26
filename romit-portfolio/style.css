@@ -84,9 +84,9 @@ p {margin:0 0 1.1rem;}
 .socials a:after {content:"";position:absolute;inset:0;opacity:.15;background:var(--accent);mix-blend-mode:overlay;}
 .socials a:hover {transform:translateY(-4px);box-shadow:0 4px 16px -4px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.15);}
 .socials .icon {background-size:60%;background-repeat:no-repeat;background-position:center;}
-.socials .github {background-image:url('./resources/github.png.png');}
-.socials .linkedin {background-image:url('./resources/LinkedIn .png.png');}
-.socials .email {background-image:url('./resources/gmail.png.png');}
+.socials .github {background-image:url('../resources/github.png.png');}
+.socials .linkedin {background-image:url('../resources/LinkedIn .png.png');}
+.socials .email {background-image:url('../resources/gmail.png.png');}
 .gradient {background:var(--accent);-webkit-background-clip:text;background-clip:text;color:transparent;}
 .hero-art {position:relative;aspect-ratio:1/1;max-width:520px;width:100%;border-radius:32px;background:radial-gradient(circle at 40% 30%,#121418,#07080a);box-shadow:0 0 0 1px rgba(255,255,255,.04),0 14px 70px -18px rgba(0,0,0,.85);overflow:hidden;}
 .hero-art:after {content:"";position:absolute;inset:0;background:radial-gradient(circle at 60% 40%,rgba(112,128,255,.25),transparent 70%);mix-blend-mode:overlay;}
@@ -98,6 +98,7 @@ canvas#hero3d {position:absolute;inset:0;width:100%;height:100%;display:block;}
 .quick-stats {display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1rem;margin-top:2rem;}
 .quick-stats .num {font-size:1.9rem;font-weight:700;background:var(--accent);-webkit-background-clip:text;background-clip:text;color:transparent;display:block;}
 .quick-stats .label {display:block;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-dim);font-weight:600;margin-top:.15rem;}
+
 .bio-card {background:rgba(255,255,255,.03);border:var(--border);border-radius:var(--radius-lg);padding:1.75rem;}
 .bio-card h3 {margin-top:0;font-size:1.1rem;}
 .checklist {list-style:none;padding:0;margin:0;display:grid;gap:.6rem;}
@@ -176,6 +177,8 @@ canvas#hero3d {position:absolute;inset:0;width:100%;height:100%;display:block;}
   .nav-list.show {opacity:1;pointer-events:auto;transform:translateY(0);}  
   .nav-list li {width:100%;}
   .nav-list a {display:block;padding:.75rem 0;}
+  .timeline-item {grid-template-columns:1fr;gap:.5rem;}
+  .timeline-item:before {left:.35rem;}
 }
 
 /* Scroll Animations */

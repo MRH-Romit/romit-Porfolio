@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Redwan Hossain Romit — Portfolio</title>
+  <meta name="description" content="4th year Computer Science Engineer specializing in Machine Learning and Network Security. UIU Robotics Team Lead & Open-Source Contributor." />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container flex between center-v">
+      <div class="brand">Redwan Hossain <span>Romit</span></div>
+      <nav class="nav" id="nav" aria-label="Primary Navigation">
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+        <ul class="nav-list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact" class="btn btn-primary btn-small">Contact</a></li>
+          <li><button id="themeToggle" class="btn btn-small btn-ghost" type="button" aria-label="Toggle theme">🌓</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero container">
+    <div class="hero-text">
+      <h1><span class="hi">Hi, I'm</span> Redwan Hossain <span class="gradient name-accent">Romit</span></h1>
+      <h2 class="subtitle"><span id="typed" aria-live="polite"></span></h2>
+      <p class="lead">I'm a 4th-year <strong>CSE student at UIU</strong> with a strong foundation in <strong>Machine Learning</strong> and <strong>Network Security</strong>. As <strong>Sub Team Lead for UIU Underwater Robotics</strong> and an active <strong>Open-Source Contributor</strong>, I'm passionate about building secure, intelligent systems and contributing to community-driven projects.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="../resources/Redwan Hossian Romit CV.docx" class="btn btn-ghost" download>Download CV</a>
+      </div>
+      <div class="socials" aria-label="Social links">
+        <a href="https://github.com/MRH-Romit" target="_blank" rel="noopener" aria-label="GitHub" class="icon github" title="GitHub"></a>
+        <a href="https://www.linkedin.com/in/mdromit" target="_blank" rel="noopener" aria-label="LinkedIn" class="icon linkedin" title="LinkedIn"></a>
+        <a href="mailto:mdromit2002@gmail.com" aria-label="Email" class="icon email" title="Email"></a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <canvas id="hero3d" aria-hidden="true"></canvas>
+      <canvas id="orbCanvas" aria-hidden="true"></canvas>
+    </div>
+  </section>
+
+  <section id="about" class="section alt">
+    <div class="container grid-2 gap-xl">
+      <div>
+        <h3 class="eyebrow">About</h3>
+        <h2 class="section-title">Who I Am</h2>
+        <p>I'm passionate about transforming ideas into secure, intelligent systems. With a strong foundation in Machine Learning and Network Security, I focus on building data-driven solutions that solve real-world problems. My areas of expertise include anomaly detection, packet analysis, and hardware-software integration.</p>
+        <p>As Sub Team Lead in UIU's Underwater Robotics team, I oversee mechanical design integration and sensor deployment. I value clean code, measurable impact, and collaborative problem-solving. I actively contribute to open-source security repositories and enjoy exploring new technologies.</p>
+        <div class="quick-stats">
+          <div><span class="num" data-count="4">4+</span><span class="label">Years Coding</span></div>
+          <div><span class="num" data-count="27">27+</span><span class="label">Public Repos</span></div>
+          <div><span class="num" data-count="49">49+</span><span class="label">Stars Earned</span></div>
+          <div><span class="num" data-count="276">276+</span><span class="label">2025 Commits</span></div>
+        </div>
+      </div>
+      <div class="card shadow bio-card">
+        <h3>Profile Snapshot</h3>
+        <ul class="checklist">
+          <li>Role: ML & Network Security Specialist</li>
+          <li>Location: Dhaka, Bangladesh</li>
+          <li>Education: BSc CSE, UIU (4th Year)</li>
+          <li>Focus: Machine Learning, Network Security, IoT</li>
+          <li>Leadership: UIU Robotics Sub Team Lead</li>
+          <li>Open to: Internships, Collaborations, Open Source</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="section">
+    <div class="container">
+      <h3 class="eyebrow">Experience & Leadership</h3>
+      <h2 class="section-title">Professional Journey</h2>
+      <div class="timeline" id="experienceTimeline">
+        <article class="timeline-item">
+          <div class="time">Oct 2025 — Present</div>
+          <div class="content">
+            <h3>Sub Team Lead <span class="company">@ UIU Underwater Robotics</span></h3>
+            <ul>
+              <li>Directing the technical sub-team in the Mechanical department for UIU's underwater ROV project</li>
+              <li>Overseeing mechanical design integration using <strong>Fusion 360</strong> and coordinating sensor deployment</li>
+              <li>Leading hardware-software integration efforts for autonomous underwater navigation systems</li>
+              <li>Stack: Fusion 360, Microcontrollers, Sensors, C++</li>
+            </ul>
+          </div>
+        </article>
+        
+        <article class="timeline-item">
+          <div class="time">2023 — Present</div>
+          <div class="content">
+            <h3>Open-Source Contributor <span class="company">@ GitHub Community</span></h3>
+            <ul>
+              <li>Actively contributing to and maintaining security-focused repositories on GitHub</li>
+              <li>Collaborating with global developers on community-driven projects</li>
+              <li>Focus areas: Security tools, automation scripts, and documentation improvements</li>
+              <li>Technologies: Python, JavaScript, Git/GitHub</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="section alt">
+    <div class="container">
+      <h3 class="eyebrow">Education</h3>
+      <h2 class="section-title">Academic Background</h2>
+      <div class="timeline">
+        <article class="timeline-item">
+          <div class="time">Fall 2022 — Ongoing</div>
+          <div class="content">
+            <h3>Bachelor of Science in Computer Science and Engineering</h3>
+            <p class="company">United International University (UIU)</p>
+            <p>Currently in 4th year, focusing on Machine Learning, Network Security, and IoT systems.</p>
+          </div>
+        </article>
+        
+        <article class="timeline-item">
+          <div class="time">2021</div>
+          <div class="content">
+            <h3>Higher Secondary Certificate (HSC)</h3>
+            <p class="company">Mohipal Government College</p>
+            <p><strong>GPA: 4.89</strong></p>
+          </div>
+        </article>
+        
+        <article class="timeline-item">
+          <div class="time">2019</div>
+          <div class="content">
+            <h3>Secondary School Certificate (SSC)</h3>
+            <p class="company">Chittagong Laboratory High School</p>
+            <p><strong>GPA: 4.89</strong></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section">
+    <div class="container">
+      <h3 class="eyebrow">Skills & Abilities</h3>
+      <h2 class="section-title">Tech Stack & Expertise</h2>
+      
+      <div class="skills-category">
+        <h4 class="skill-category-title">Machine Learning</h4>
+        <div class="skills-grid">
+          <div class="skill"><span>Data Preprocessing</span></div>
+          <div class="skill"><span>Classification Models</span></div>
+          <div class="skill"><span>Anomaly Detection</span></div>
+          <div class="skill"><span>Python (Advanced)</span></div>
+        </div>
+      </div>
+
+      <div class="skills-category">
+        <h4 class="skill-category-title">Networking & Security</h4>
+        <div class="skills-grid">
+          <div class="skill"><span>Packet Analysis</span></div>
+          <div class="skill"><span>SIEM (Wazuh)</span></div>
+          <div class="skill"><span>Subnetting</span></div>
+          <div class="skill"><span>OSI Model</span></div>
+          <div class="skill"><span>Zero Day Detection</span></div>
+        </div>
+      </div>
+
+      <div class="skills-category">
+        <h4 class="skill-category-title">Development</h4>
+        <div class="skills-grid">
+          <div class="skill"><span>Python (Advanced)</span></div>
+          <div class="skill"><span>C++</span></div>
+          <div class="skill"><span>Java</span></div>
+          <div class="skill"><span>JavaScript</span></div>
+          <div class="skill"><span>HTML / CSS</span></div>
+          <div class="skill"><span>SQL / Django</span></div>
+        </div>
+      </div>
+
+      <div class="skills-category">
+        <h4 class="skill-category-title">Tools & Platforms</h4>
+        <div class="skills-grid">
+          <div class="skill"><span>Git / GitHub</span></div>
+          <div class="skill"><span>Fusion 360 (CAD)</span></div>
+          <div class="skill"><span>Linux</span></div>
+          <div class="skill"><span>Postman</span></div>
+          <div class="skill"><span>Pixhawk</span></div>
+          <div class="skill"><span>Microcontrollers</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section alt">
+    <div class="container">
+      <h3 class="eyebrow">Projects</h3>
+      <h2 class="section-title">Key Projects</h2>
+      <div class="projects-grid" id="projectsGrid">
+        
+        <article class="project-card featured">
+          <div class="project-media skeleton" title="Project ARAM"></div>
+          <div class="project-content">
+            <div class="project-badge">🏆 3rd Runners-Up — UIU CSE Project Show Summer 2025</div>
+            <h3>Project ARAM (Autonomous River Analysis)</h3>
+            <p><strong>Role: Hardware Core Lead</strong></p>
+            <p>Designed the complete hardware architecture for an autonomous river analysis boat. Implemented auto-navigation, object detection systems, and integrated multiple sensors for water quality monitoring.</p>
+            <ul class="tags">
+              <li>Microcontrollers</li>
+              <li>C++</li>
+              <li>Pixhawk</li>
+              <li>Sensors</li>
+              <li>IoT</li>
+              <li>Navigation</li>
+            </ul>
+            <div class="links">
+              <a href="https://github.com/MRH-Romit" class="btn btn-small btn-primary" target="_blank" rel="noopener">View Project</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-media skeleton" title="ShebaXpert"></div>
+          <div class="project-content">
+            <h3>ShebaXpert</h3>
+            <p>Full-stack service-providing platform connecting users with experts. Developed a comprehensive relational database system for managing user profiles, service requests, and bookings.</p>
+            <ul class="tags">
+              <li>JavaScript</li>
+              <li>HTML / CSS</li>
+              <li>Django</li>
+              <li>SQL</li>
+              <li>Full Stack</li>
+            </ul>
+            <div class="links">
+              <a href="https://github.com/MRH-Romit/ShebaXpert" class="btn btn-small btn-ghost" target="_blank" rel="noopener">View Code</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-media skeleton" title="Cyber Security Analysis"></div>
+          <div class="project-content">
+            <h3>Cyber Security & Network Analysis</h3>
+            <p>Built network traffic analysis tools using Python to detect anomalies and potential security threats. Explored Wazuh SIEM for endpoint security and implemented "Zero Day Detection" mechanisms.</p>
+            <ul class="tags">
+              <li>Python</li>
+              <li>Wazuh</li>
+              <li>SIEM</li>
+              <li>Security</li>
+              <li>Network Analysis</li>
+            </ul>
+            <div class="links">
+              <a href="https://github.com/MRH-Romit" class="btn btn-small btn-ghost" target="_blank" rel="noopener">View Code</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-media skeleton" title="Machine Learning Practice"></div>
+          <div class="project-content">
+            <h3>Machine Learning Experiments</h3>
+            <p>Collection of ML practice notebooks exploring various algorithms, data preprocessing techniques, model evaluation methods, and classification models for real-world datasets.</p>
+            <ul class="tags">
+              <li>Python</li>
+              <li>ML</li>
+              <li>Data Science</li>
+              <li>Notebooks</li>
+            </ul>
+            <div class="links">
+              <a href="https://github.com/MRH-Romit/Practicing-Machine-Learning-" class="btn btn-small btn-ghost" target="_blank" rel="noopener">View Code</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-media skeleton" title="Video Editor"></div>
+          <div class="project-content">
+            <h3>Video Processing Tools</h3>
+            <p>Lightweight video editing utilities and experiments with processing pipelines, implementing basic transformations and automated video manipulation.</p>
+            <ul class="tags">
+              <li>Python</li>
+              <li>JavaScript</li>
+              <li>Video Processing</li>
+              <li>Automation</li>
+            </ul>
+            <div class="links">
+              <a href="https://github.com/MRH-Romit/video-editor" class="btn btn-small btn-ghost" target="_blank" rel="noopener">View Code</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-media skeleton" title="Open Source Contributions"></div>
+          <div class="project-content">
+            <h3>Open Source Security Tools</h3>
+            <p>Active contributions to security-focused repositories including automation scripts, vulnerability scanners, and documentation improvements for community projects.</p>
+            <ul class="tags">
+              <li>Python</li>
+              <li>Security</li>
+              <li>Open Source</li>
+              <li>Git</li>
+            </ul>
+            <div class="links">
+              <a href="https://github.com/MRH-Romit" class="btn btn-small btn-ghost" target="_blank" rel="noopener">GitHub Profile</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="achievements" class="section">
+    <div class="container narrow center-text">
+      <h3 class="eyebrow">Achievements</h3>
+      <h2 class="section-title">Recognition & Awards</h2>
+      <div class="achievement-card card shadow">
+        <div class="achievement-icon">🏆</div>
+        <h3>3rd Runners-Up</h3>
+        <p class="company">UIU CSE Project Show — Summer 2025</p>
+        <p>Received recognition for <strong>Project ARAM</strong>, an autonomous river analysis boat with advanced navigation and object detection capabilities.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section cta-section alt">
+    <div class="container narrow center-text">
+      <h3 class="eyebrow">Contact</h3>
+      <h2 class="section-title">Let's Build Something</h2>
+      <p>Interested in collaborating or have an opportunity? Reach out via the form below or email me directly at <a href="mailto:mdromit2002@gmail.com">mdromit2002@gmail.com</a>.</p>
+      <p class="contact-details">
+        <strong>Phone:</strong> 01568827355<br>
+        <strong>Address:</strong> La-varna, Bcc Road, Wari, Dhaka-1203
+      </p>
+      <form class="contact-form" action="https://formsubmit.co/mdromit2002@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Portfolio Contact from Website" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_next" value="https://redwanromit.netlify.app/thanks.html" />
+        <div class="grid-2 gap">
+          <div class="field"><label>Name<input name="name" required /></label></div>
+          <div class="field"><label>Email<input type="email" name="email" required /></label></div>
+        </div>
+        <div class="field"><label>Subject<input name="subject" /></label></div>
+        <div class="field"><label>Message<textarea name="message" rows="5" required></textarea></label></div>
+        <button class="btn btn-primary" type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container flex between center-v wrap small">
+      <div>© <span id="year"></span> Redwan Hossain Romit. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="https://github.com/MRH-Romit" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/mdromit" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <noscript><style>#typed{display:none} .dynamic-projects-note{display:none}</style></noscript>
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js" defer></script>
+  <script src="./script.js" defer></script>
+</body>
+</html>
